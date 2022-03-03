@@ -1,0 +1,17 @@
+{
+  "name": "@akashudayan/sample-package",
+  "version": "1.0.0",
+  "description": "This is a sample private package to publish to npm repository",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
+}
