@@ -27,7 +27,7 @@ jobs:
           org_name: akashudayan
           auth_token: ${{ secrets.ACCESS_TOKEN }}
   build:
-    if: success()
+    needs: publish_package
     runs-on: ubuntu-latest
     defaults:
       run:
