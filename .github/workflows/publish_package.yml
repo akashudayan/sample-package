@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:     
-  build:
+  job1:
     runs-on: ubuntu-latest
     defaults:
       run:
