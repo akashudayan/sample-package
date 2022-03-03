@@ -3,8 +3,9 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
-jobs: 
-       
+    branches:
+    - 'releases/**'
+jobs:     
   build:
     runs-on: ubuntu-latest
     defaults:

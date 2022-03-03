@@ -1,3 +1,3 @@
 export function sayHello(name) {
-    return "HellO ".concat(name, ", say hello to TypeScript.");
+    return "Hi ".concat(name, ", say hello to TypeScript.");
 }
