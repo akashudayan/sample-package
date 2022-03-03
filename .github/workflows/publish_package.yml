@@ -9,6 +9,8 @@ jobs:
     defaults:
       run:
         working-directory: example
+    env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
     strategy:
       matrix:
