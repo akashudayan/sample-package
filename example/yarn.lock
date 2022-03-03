@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@akashudayan/sample-package@^1.0.7":
+  version "1.0.7"
+  resolved "https://npm.pkg.github.com/download/@akashudayan/sample-package/1.0.7/1e38d76309b7fc43d8c0ce3f725d0442118b969b57d6a884c7fed20c66ec10b7#7c4b27892e9cc5b9c87b3447cefe22e87d605191"
+  integrity sha512-aBq3Y4tzyF6/kPr5EO5lGutsriK+8Sx7y+Ne74vEfwwL9g60Z7DZbzW8m/WoI5MlJbrq85l3hwOzdKupiR98Aw==
+
 "@ampproject/remapping@^2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.1.2.tgz#4edca94973ded9630d20101cd8559cedb8d8bd34"
