@@ -19,6 +19,7 @@ jobs:
         with:
           org_name: akashudayan
           auth_token: ${{secrets.GITHUB_TOKEN}}
+
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -26,6 +27,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn
       - run: npm run build --if-present
-      env:
-          AUTH_TOKEN: ${{ secrets.github_auth_token }}
-
+      - run: npm test
