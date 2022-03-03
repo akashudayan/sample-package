@@ -1,6 +1,6 @@
 {
   "name": "@akashudayan/sample-package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a sample private package to publish to npm repository",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -10,6 +10,10 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akashudayan/sample-package.git"
   },
   "devDependencies": {
     "typescript": "^4.6.2"
