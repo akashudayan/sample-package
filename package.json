@@ -1,6 +1,6 @@
 {
   "name": "@akashudayan/sample-package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a sample private package to publish to npm repository",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
