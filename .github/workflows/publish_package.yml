@@ -4,30 +4,30 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: sample-package
-    steps:
-      - uses: actions/checkout@v2
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@akashudayan"
-      - run: yarn
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  # build:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: sample-package
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     # Setup .npmrc file to publish to npm
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: "14.x"
+  #         registry-url: "https://npm.pkg.github.com"
+  #         scope: "@akashudayan"
+  #     - run: yarn
+  #     - run: npm publish
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - uses: ferluisxd/create-npmrc@3
-        with:
-          org_name: akashudayan
-          auth_token: ${{ secrets.ACCESS_TOKEN }}
+  #     - uses: ferluisxd/create-npmrc@3
+  #       with:
+  #         org_name: akashudayan
+  #         auth_token: ${{ secrets.ACCESS_TOKEN }}
     
-    job2: 
+    build: 
       runs-on: ubuntu-latest
       defaults:
       run:
