@@ -18,7 +18,9 @@ jobs:
       - uses: ferluisxd/create-npmrc@3
         with:
           org_name: akashudayan
-          auth_token: ${{ secrets.ACCESS_TOKEN }}
+          auth_token: ${{secrets.GITHUB_TOKEN}}
+          env:
+            AUTH_TOKEN: ${{ secrets.github_auth_token }}
           
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
