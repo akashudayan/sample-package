@@ -3,28 +3,21 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
-jobs:
-  build:
+jobs:     
+  publish_superpacs_adapter:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: example
-    
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
+        working-directory: sample-package
     steps:
-
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: echo //npm.pkg.github.com/:_authToken=${{GITHUB_TOKEN}} >> ~/.npmrc
+          node-version: '14.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: "@akashudayan"
       - run: yarn
-      - run: npm run build --if-present
-      - run: npm test
-      - env:
-         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
