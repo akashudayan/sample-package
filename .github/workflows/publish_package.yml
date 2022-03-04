@@ -1,10 +1,11 @@
 name: Publish Package to npmjs
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened]
-jobs:     
-  build:
+  push:
+    branches:
+      - ak/sample-package
+jobs:
+  publish_package:
+#     if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -14,11 +15,16 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
-          registry-url: 'https://npm.pkg.github.com'
+          node-version: "14.x"
+          registry-url: "https://npm.pkg.github.com"
           scope: "@akashudayan"
       - run: yarn
       - run: yarn build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - uses: ferluisxd/create-npmrc@3
+        with:
+          org_name: akashudayan
+          auth_token: ${{ secrets.ACCESS_TOKEN }}
