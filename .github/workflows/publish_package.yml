@@ -1,14 +1,10 @@
 name: Publish Package to npmjs
 on:
   workflow_dispatch:
-  pull_request_target:
-    types:
-      [opened, synchronize, reopened]
-    branches:    
-      - 'releases/**'
-
-jobs:
-  publish_package:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:     
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,6 +18,7 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@akashudayan"
       - run: yarn
+      - run: yarn build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
