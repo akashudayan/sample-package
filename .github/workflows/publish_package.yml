@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
+  branches:    
+      - 'releases/**'
 jobs:
   publish_package:
     runs-on: ubuntu-latest
