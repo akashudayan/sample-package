@@ -3,9 +3,36 @@ on:
   workflow_dispatch:
   pull_request:
     types: [closed]
-jobs:
+jobs:     
+  build:
+    needs: publish_package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example
+    
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: echo //npm.pkg.github.com/:_authToken=${{secrets.ACCESS_TOKEN}} >> ~/.npmrc
+      - run: yarn
+      - run: npm run build --if-present
+      - run: npm test
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
   publish_package:
     if: github.event.pull_request.merged == 'true'
+    needs: build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -28,3 +55,8 @@ jobs:
         with:
           org_name: akashudayan
           auth_token: ${{ secrets.ACCESS_TOKEN }}
+  
+    
+
+        
+    
