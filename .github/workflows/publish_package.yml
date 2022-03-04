@@ -2,7 +2,7 @@ name: Publish Package to npmjs
 on:
   push:
     branches:
-      - main
+      - ak/sample-package
 jobs:
   publish_package:
 #     if: github.event.pull_request.merged == 'true'
